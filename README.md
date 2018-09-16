@@ -9,10 +9,10 @@
 ![es.yml](https://github.com/liyifan687/Elasticsearch/blob/master/img/esyml.PNG)
 
 证书生成方式不同DN不同，要查看DN确保正确（命令可百度查看证书DN）。
-######## 同时search guard配置文件中要加入该DN账户给该DN以账户和权限。
-
+########同时search guard配置文件中要加入该DN账户给该DN以账户和权限。
+########sg_internal_users.yml：
 ![sg_internal_users.yml](https://github.com/liyifan687/Elasticsearch/blob/master/img/sg_internal_users.yml.PNG)
-
+########sg_roles_mapping.yml
 ![sg_roles_mapping](https://github.com/liyifan687/Elasticsearch/blob/master/img/sg_roles_mapping.PNG)
 
 ###### 3. 这里两个较好的博客 
@@ -24,8 +24,8 @@
 
 - CN=sgadmin-keystore.jks和truststore.jks。
 - clientUtil类在/service/util注册成bean.
-######5. 一些具体的es和安全插件的api建议去官网看，较详细。
-######6. 我会贴出我的相关配置文件以及部分代码供以参考.（由于是工作业务代码所以只能贴出主要部分）
+###### 5. 一些具体的es和安全插件的api建议去官网看，较详细。
+###### 6. 我会贴出我的相关配置文件以及部分代码供以参考.（由于是工作业务代码所以只能贴出主要部分）
 
 ### 2. searchGuard与Java的结合-建立client
 ###### 2.1. 当es安装searchGuard后就不能直接建立client连接了
