@@ -8,11 +8,10 @@
 
 ![es.yml](https://github.com/liyifan687/Elasticsearch/blob/master/img/esyml.PNG)
 
-证书生成方式不同DN不同，要查看DN确保正确（命令可百度查看证书DN）。
-########同时search guard配置文件中要加入该DN账户给该DN以账户和权限。
-########sg_internal_users.yml：
+###### 证书生成方式不同DN不同，要查看DN确保正确（命令可百度查看证书DN）。同时search guard配置文件中要加入该DN账户给该DN以账户和权限。
+###### sg_internal_users.yml：
 ![sg_internal_users.yml](https://github.com/liyifan687/Elasticsearch/blob/master/img/sg_internal_users.yml.PNG)
-########sg_roles_mapping.yml
+###### sg_roles_mapping.yml
 ![sg_roles_mapping](https://github.com/liyifan687/Elasticsearch/blob/master/img/sg_roles_mapping.PNG)
 
 ###### 3. 这里两个较好的博客 
@@ -111,7 +110,7 @@ Admin keystore and private key password:  xxx
 ```
 
 ###### 4.3 分页
-####### 分页有两种，我这里使用的from，size.不过第一次查询获取总数时建议不拿数据只取counts，.setSize(0)：这样提高速度也能避免浪费性能
+###### 分页有两种，我这里使用的from，size.不过第一次查询获取总数时建议不拿数据只取counts，.setSize(0)：这样提高速度也能避免浪费性能
 ```	
 	//查询建立
         SearchRequestBuilder responseBuilder = esClient
@@ -149,7 +148,9 @@ Admin keystore and private key password:  xxx
 			}
 
 ```
-####### 4.4.1 这里的classMap注意，当某字段信息是嵌套类型时 需要设好接受该字段的Map信息
+
+###### 4.4.1这里的classMap注意，当某字段信息是嵌套类型时 需要设好接受该字段的Map信息
+
 ```
 	//对于嵌套数组类型，从Es中读取时需先反射定义好map
         Map<String, Class> classMap = new HashMap<String, Class>();
