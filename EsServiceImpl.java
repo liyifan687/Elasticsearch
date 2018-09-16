@@ -92,7 +92,7 @@ public class EsServiceImpl implements EsService {
         int count = 1;
         String mapJackson = null;
         for (Long id : lists) {
-            EsXingceBean xcBean = new EsXingceBean();
+            YourBean xcBean = new YourBean();
             QuestionResponseBean qBean = questionService.findById(id);
             BeanUtils.copyProperties(qBean, xcBean);
             ObjectMapper mapper = new ObjectMapper();
@@ -102,7 +102,7 @@ public class EsServiceImpl implements EsService {
                 e.printStackTrace();
             }
             //指定index和type
-            bulkRequest.add(esClient.prepareIndex("xingce", "xc").setSource(mapJackson, XContentType.JSON));
+            bulkRequest.add(esClient.prepareIndex("yourIndex", "yourType").setSource(mapJackson, XContentType.JSON));
             if (count % 500 == 0) {
                 bulkRequest.execute().actionGet();
                 //此处新建一个bulkRequest，类似于重置效果。避免重复提交
@@ -148,7 +148,7 @@ public class EsServiceImpl implements EsService {
 
         //建立连接
         SearchRequestBuilder responseBuilder = esClient
-                .prepareSearch("xingce").setTypes("xc");
+                .prepareSearch("yourIndex").setTypes("yourType");
         //第一次查询建立获取总条数分页使用
         SearchResponse myResponse = responseBuilder
                 .setQuery(qb)
