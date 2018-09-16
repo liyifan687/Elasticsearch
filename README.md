@@ -4,13 +4,19 @@
 #### 安全验证这部分大多选择的Xpack,但Xpack收费当时就用了searchguard，但searchguard相关的文档很少，算是一点点去看官方文档解决。
 ### 1. searchGuard与ELK的结合
 ######1.1 安全证书可以通过官方网站在线生成，填写集群节点信息。邮件发送后下载到本地。
-######2.2 密钥证书生成后必须将DN配置到elasticsearch.yml中。证书生成方式不同DN不同，要查看DN确保正确（命令可百度查看证书DN）。同时search guard配置文件中要加入该DN账户给该DN以账户和权限。
+######2.2 密钥证书生成后必须将DN配置到elasticsearch.yml中。
+![es.yml](https://github.com/liyifan687/Elasticsearch/blob/master/img/esyml.PNG)
+证书生成方式不同DN不同，要查看DN确保正确（命令可百度查看证书DN）。
+######## 同时search guard配置文件中要加入该DN账户给该DN以账户和权限。
+![sg_internal_users.yml](https://github.com/liyifan687/Elasticsearch/blob/master/img/sg_internal_users.yml.PNG)
+![sg_roles_mapping](https://github.com/liyifan687/Elasticsearch/blob/master/img/sg_roles_mapping.PNG)
 ######3. 这里两个较好的博客 
 	https://www.jianshu.com/p/91faac8e18cf
 	https://blog.csdn.net/z1x2c34/article/details/77968955#commentBox
 ######4. 证书文件在ops/resource中
-	CN=sgadmin-keystore.jks和truststore.jks。
-    clientUtil类在/service/util注册成bean.
+![项目结构](https://github.com/liyifan687/Elasticsearch/blob/master/img/%E7%BB%93%E6%9E%84%E5%9B%BE.PNG)
+- CN=sgadmin-keystore.jks和truststore.jks。
+- clientUtil类在/service/util注册成bean.
 ######5. 一些具体的es和安全插件的api建议去官网看，较详细。
 ######6. 我会贴出我的相关配置文件以及部分代码供以参考.（由于是工作业务代码所以只能贴出主要部分）
 
